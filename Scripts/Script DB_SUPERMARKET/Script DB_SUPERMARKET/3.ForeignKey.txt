@@ -1,0 +1,13 @@
+ALTER TABLE product ADD FOREIGN KEY (fk_id_product_type) REFERENCES PRODUCT_TYPE (id_product_type) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE product_provider ADD FOREIGN KEY (fk_id_provider) REFERENCES provider (id_provider) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE product_provider ADD FOREIGN KEY (fk_id_provider) REFERENCES product (id_product) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE price_product ADD FOREIGN KEY (fk_id_product_provider) REFERENCES product_provider (id_product_provider) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE tax_price_product ADD FOREIGN KEY (fk_id_price_product) REFERENCES price_product (id_price_product) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE tax_price_product ADD FOREIGN KEY (fk_id_tax) REFERENCES tax (id_tax) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ticket ADD FOREIGN KEY (fk_id_person_cashier) REFERENCES person (id_person) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ticket ADD FOREIGN KEY (fk_id_person_customer) REFERENCES person (id_person) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ticket_detail ADD FOREIGN KEY (fk_id_tax_price_product) REFERENCES TAX_PRICE_PRODUCT (id_tax_price_product) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ticket_detail ADD FOREIGN KEY (fk_id_ticket) REFERENCES TICKET (id_ticket) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE ticket_detail ADD FOREIGN KEY (fk_id_person_administrator) REFERENCES PERSON (id_person) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE person_person_type ADD FOREIGN KEY (fk_id_person_type) REFERENCES person_type (id_person_type) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE person_person_type ADD FOREIGN KEY (fk_id_person) REFERENCES PERSON (id_person) ON UPDATE CASCADE ON DELETE CASCADE;
